@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "6d495c30-6a37-406b-99b9-d36a9ab56f14",
+		"name": "GeoTestCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Email\":\"TestUser@test.com\",\n\t\"Password\":\"TestPassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44318/api/account/register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44318",
+					"path": [
+						"api",
+						"account",
+						"register"
+					]
+				},
+				"description": "Create New App User"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Email\":\"TestUser@test.com\",\n\t\"Password\":\"TestPassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44318/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44318",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Login with username and password"
+			},
+			"response": []
+		},
+		{
+			"name": "NewCalcGeoDistanceRequest",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUZXN0VXNlckB0ZXN0LmNvbSIsImp0aSI6IjA0ZTcyNDJiLTUzZjUtNGZiNi1iZjcxLTVlMjA3Njg1YWM0ZCIsImlhdCI6MTU3NjU4OTQwNywicm9sIjoiYXBpX2FjY2VzcyIsImlkIjoiNjMxM2JlMDgtNjg3YS00NjZjLThhMDEtMTMxZmE0YzFlYTM0IiwibmJmIjoxNTc2NTg5NDA2LCJleHAiOjE1NzY1OTY2MDYsImlzcyI6IndlYkFwaSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQzMTgvIn0.wipItEgPNolNO74skQ6KbskxHzmieZFvoW4P-2kYy5s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Start\":{\n\t\t\"Lat\":35.6892,\n\t\t\"Longt\":51.3890\n\t},\n\t\"End\":{\n\t\t\"Lat\":48.8566,\n\t\t\"Longt\":2.3522\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44318/api/geo/add",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44318",
+					"path": [
+						"api",
+						"geo",
+						"add"
+					]
+				},
+				"description": "Calculate distance between to geo points"
+			},
+			"response": []
+		},
+		{
+			"name": "NewCalcGetDistanceRequest2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUZXN0VXNlckB0ZXN0LmNvbSIsImp0aSI6IjA0ZTcyNDJiLTUzZjUtNGZiNi1iZjcxLTVlMjA3Njg1YWM0ZCIsImlhdCI6MTU3NjU4OTQwNywicm9sIjoiYXBpX2FjY2VzcyIsImlkIjoiNjMxM2JlMDgtNjg3YS00NjZjLThhMDEtMTMxZmE0YzFlYTM0IiwibmJmIjoxNTc2NTg5NDA2LCJleHAiOjE1NzY1OTY2MDYsImlzcyI6IndlYkFwaSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQzMTgvIn0.wipItEgPNolNO74skQ6KbskxHzmieZFvoW4P-2kYy5s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Start\":{\n\t\t\"Lat\":48.8566,\n\t\t\"Longt\":2.3522\n\t\t\n\t},\n\t\"End\":{\n\t\t\"Lat\":35.6892,\n\t\t\"Longt\":51.3890\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44318/api/geo/add",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44318",
+					"path": [
+						"api",
+						"geo",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListMyGeoDistances",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUZXN0VXNlckB0ZXN0LmNvbSIsImp0aSI6IjA0ZTcyNDJiLTUzZjUtNGZiNi1iZjcxLTVlMjA3Njg1YWM0ZCIsImlhdCI6MTU3NjU4OTQwNywicm9sIjoiYXBpX2FjY2VzcyIsImlkIjoiNjMxM2JlMDgtNjg3YS00NjZjLThhMDEtMTMxZmE0YzFlYTM0IiwibmJmIjoxNTc2NTg5NDA2LCJleHAiOjE1NzY1OTY2MDYsImlzcyI6IndlYkFwaSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQzMTgvIn0.wipItEgPNolNO74skQ6KbskxHzmieZFvoW4P-2kYy5s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44318/api/geo/list",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44318",
+					"path": [
+						"api",
+						"geo",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListMyGeoDistancesWithSkip",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUZXN0VXNlckB0ZXN0LmNvbSIsImp0aSI6IjM4ZDVlYThhLTY5ZWYtNDgzYi1hYmNhLTU5ZTFjMWFkZDc4MyIsImlhdCI6MTU3NjU5MTQ5Miwicm9sIjoiYXBpX2FjY2VzcyIsImlkIjoiNjMxM2JlMDgtNjg3YS00NjZjLThhMDEtMTMxZmE0YzFlYTM0IiwibmJmIjoxNTc2NTkxNDkyLCJleHAiOjE1NzY1OTg2OTIsImlzcyI6IndlYkFwaSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQzMTgvIn0.hieHgGCeNW0N3cTZcKcKWzQ_O_tpeTUe2s3_-3tlOgk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44318/api/geo/list?skip=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44318",
+					"path": [
+						"api",
+						"geo",
+						"list"
+					],
+					"query": [
+						{
+							"key": "skip",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

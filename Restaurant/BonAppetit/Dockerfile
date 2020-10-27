@@ -1,0 +1,25 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
+WORKDIR /src
+COPY ["BonAppetit/BonAppetit.Web.csproj", "BonAppetit/"]
+COPY ["BonAppetit.Service/BonAppetit.Service.csproj", "BonAppetit.Service/"]
+COPY ["BonAppetit.Repository/BonAppetit.Repository.csproj", "BonAppetit.Repository/"]
+COPY ["BonAppetit.Model/BonAppetit.Model.csproj", "BonAppetit.Model/"]
+RUN dotnet restore "BonAppetit/BonAppetit.Web.csproj"
+COPY . .
+WORKDIR "/src/BonAppetit"
+RUN dotnet build "BonAppetit.Web.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "BonAppetit.Web.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "BonAppetit.Web.dll"]
