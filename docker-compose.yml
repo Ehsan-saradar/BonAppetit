@@ -1,0 +1,45 @@
+version: "3.2"
+services:
+  sql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
+    container_name: sql
+    ports:
+      - "1433:1433"
+    expose:
+      - 1433
+    healthcheck:
+        test: "exit 0"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=qaz@1234
+  authentication:
+    build: ./Authentication
+    restart: always
+    links:
+      - sql
+    ports:
+      - "18000:80"
+    depends_on:
+            sql:
+                    condition: service_healthy
+  restaurant:
+    build: ./Restaurant
+    restart: always
+    links:
+      - sql
+    ports:
+      - "18001:80"
+    depends_on:
+            sql:
+                    condition: service_healthy
+  customer:
+    build: ./Customer
+    restart: always
+    links:
+      - sql
+    ports:
+      - "18002:80"
+    depends_on:
+            sql:
+                    condition: service_healthy
